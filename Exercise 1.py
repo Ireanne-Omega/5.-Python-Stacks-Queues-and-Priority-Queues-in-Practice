@@ -4,6 +4,10 @@
 # Exercise 1
 
 from collections import deque
+from turtle import st
+
+import rd as rd
+
 
 class Queue:
     def __init__(self):
@@ -53,7 +57,7 @@ class Queue:
         return self._elements.popleft()
 
 # Exercise 4
-
+fifo: Queue
 from queues import Queue
 
 fifo = Queue("1st", "2nd", "3rd")
@@ -69,12 +73,23 @@ len(fifo)
 # Exercise 5
 
 class Stack(Queue):
+    def __init__(self, *elements):
+        super().__init__(elements)
+        self._elements = None
+
     def dequeue(self):
         return self._elements.pop()
 
 # Exercise 6
 
 from queues import Stack
+
+lifo = Stack("1st", "2nd", "3rd")
+
+for element in lifo:
+    print(element)
+
+
 
 
 
