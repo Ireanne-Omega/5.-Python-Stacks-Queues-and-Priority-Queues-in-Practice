@@ -4,10 +4,6 @@
 # Exercise 1
 
 from collections import deque
-from turtle import st
-
-import rd as rd
-
 
 class Queue:
     def __init__(self):
@@ -61,6 +57,7 @@ fifo: Queue
 from queues import Queue
 
 fifo = Queue("1st", "2nd", "3rd")
+
 len(fifo)
 
 
@@ -88,6 +85,19 @@ lifo = Stack("1st", "2nd", "3rd")
 
 for element in lifo:
     print(element)
+
+
+# Exercise 7
+
+lifo = []
+
+lifo.append("1st")
+lifo.append("2nd")
+lifo.append("3rd")
+
+lifo.pop()
+lifo.pop()
+lifo.pop()
 
 
 
