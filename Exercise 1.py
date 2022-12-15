@@ -115,6 +115,18 @@ fruits
 
 # Exercise 9
 
+from heapq import heappop
+
+heappop(fruits)
+
+fruits
+
+
+# Exercise 10
+
+
+
+
 
 
 
