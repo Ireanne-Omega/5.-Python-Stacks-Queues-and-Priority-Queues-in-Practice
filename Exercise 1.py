@@ -3,8 +3,6 @@
 
 # Exercise 1
 
-from collections import deque
-
 class Queue:
     def __init__(self):
         self._elements = deque()
@@ -14,6 +12,7 @@ class Queue:
 
     def dequeue(self):
         return self._elements.popleft()
+
 
 # Exercise 2
 
@@ -35,6 +34,7 @@ fifo.dequeue()
 
 from collections import deque
 
+
 class Queue:
     def __init__(self, *elements):
         self._elements = deque(elements)
@@ -52,7 +52,9 @@ class Queue:
     def dequeue(self):
         return self._elements.popleft()
 
+
 # Exercise 4
+
 fifo: Queue
 from queues import Queue
 
@@ -60,9 +62,8 @@ fifo = Queue("1st", "2nd", "3rd")
 
 len(fifo)
 
-
 for element in fifo:
-   print(element)
+    print(element)
 
 len(fifo)
 
@@ -77,6 +78,7 @@ class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
 
+
 # Exercise 6
 
 from queues import Stack
@@ -85,7 +87,6 @@ lifo = Stack("1st", "2nd", "3rd")
 
 for element in lifo:
     print(element)
-
 
 # Exercise 7
 
@@ -99,26 +100,20 @@ lifo.pop()
 lifo.pop()
 lifo.pop()
 
+# Exercise 8
+
+from heapq import heappush
+
+fruits = []
+
+heappush(fruits, "orange")
+heappush(fruits, "apple")
+heappush(fruits, "banana")
+
+fruits
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Exercise 9
 
 
 
