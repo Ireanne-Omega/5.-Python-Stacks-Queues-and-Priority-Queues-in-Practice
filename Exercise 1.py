@@ -65,7 +65,19 @@ for element in fifo:
 
 len(fifo)
 
-# Exerce 1 Act 2
+
+# Exercise 5
+
+class Stack(Queue):
+    def dequeue(self):
+        return self._elements.pop()
+
+# Exercise 6
+
+from queues import Stack
+
+
+
 
 
 
