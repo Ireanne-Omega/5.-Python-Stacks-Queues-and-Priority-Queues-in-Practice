@@ -1,8 +1,10 @@
 # queues.py
 
-from collections import deque
 
 # Exercise 1
+
+from collections import deque
+
 class Queue:
     def __init__(self):
         self._elements = deque()
@@ -49,6 +51,31 @@ class Queue:
 
     def dequeue(self):
         return self._elements.popleft()
+
+# Exercise 4
+
+from queues import Queue
+
+fifo = Queue("1st", "2nd", "3rd")
+len(fifo)
+
+
+for element in fifo:
+   print(element)
+
+len(fifo)
+
+# Exerce 1 Act 2
+
+
+
+
+
+
+
+
+
+
 
 
 
