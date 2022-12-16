@@ -181,6 +181,32 @@ class PriorityQueue:
         return heappop(self._elements)[1]
 
 
+# Exercise 14
+
+messages.dequeue()
+
+messages.dequeue()
+
+messages.dequeue()
+
+messages.dequeue()
+
+
+# Exercise 15
+
+from dataclasses import dataclass
+
+@dataclass
+class Message:
+    event: str
+
+wipers = Message("Windshield wipers turned on")
+hazard_lights = Message("Hazard lights turned on")
+
+wipers < hazard_lights
+
+
+
 
 
 
