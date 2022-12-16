@@ -35,32 +35,40 @@ class IterableMixin:
 
 
 # Exercise 2
-# FIFO QUEUE TESTING
+# FIFO QUEUES FIRST EXAMPLE
 
-
-# creating class for queue
+# enqueue statement
 class Queue:
     pass
-
 
 fifo = Queue()
 fifo.enqueue("1st")
 fifo.enqueue("2nd")
 fifo.enqueue("3rd")
 
+# dequeue statement
 fifo.dequeue()
-'1st'
 fifo.dequeue()
-'2nd'
 fifo.dequeue()
-'3rd'
+
 
 # Exercise 3
+# FIFO QUEUE SECOND EXAMPLE
 
+fifo: Queue
+from queues import Queue
 
+fifo = Queue("1st", "2nd", "3rd")
 
-from collections import deque
+len(fifo)
 
+for element in fifo:
+    print(element)
+
+len(fifo)
+
+# Exercise 4
+# Class Queue and Input Statement
 
 class Queue:
     def __init__(self, *elements):
@@ -80,27 +88,13 @@ class Queue:
         return self._elements.popleft()
 
 
-# Exercise 4
-
-fifo: Queue
-from queues import Queue
-
-fifo = Queue("1st", "2nd", "3rd")
-
-len(fifo)
-
-for element in fifo:
-    print(element)
-
-len(fifo)
-
-
 # Exercise 5
 # Stack Data Type Queues
 
 class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
+
 
 # Exercise 6
 # Lifo Queue First Example
@@ -109,6 +103,7 @@ lifo = Stack("1st", "2nd", "3rd")
 
 for element in lifo:
     print(element)
+
 
 # Exercise 7
 # Lifo Queue Second Example
@@ -123,11 +118,13 @@ lifo.pop()
 lifo.pop()
 lifo.pop()
 
+
 # Exercise 8
 # Priority Queue & Heap & Heappush
 
 # this is for importing and refactoring
 from heapq import heappush
+
 
 #Heappush
 fruits = []
@@ -152,13 +149,11 @@ fruits
 # Exercise 10
 # Tuple Comparison
 
-
 person1 = ("John", "Brown", 42)
 person2 = ("John", "Doe", 42)
 person3 = ("John", "Doe", 24)
 
 person1 < person2
-
 
 person2 < person3
 
@@ -241,6 +236,7 @@ class Message:
 
 # Exercise 15
 
+# this is for importing and refactoring
 from dataclasses import dataclass
 
 @dataclass
