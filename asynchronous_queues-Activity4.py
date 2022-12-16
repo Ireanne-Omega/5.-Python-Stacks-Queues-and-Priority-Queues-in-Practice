@@ -90,6 +90,7 @@ def parse_args():
 
 def parse_links(url, html):
     soup = BeautifulSoup(html, features="html.parser")
+
     for anchor in soup.select("a[href]"):
         href = anchor.get("href").lower()
     if not href.startswith("javascript:"):
