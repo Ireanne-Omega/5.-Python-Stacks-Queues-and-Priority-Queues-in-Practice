@@ -4,7 +4,7 @@
 # Exercise 1
 # QUEUES
 
-# this is importing and refactoring
+# this is for importing and refactoring
 from collections import deque
 
 class IterableMixin:
@@ -98,15 +98,12 @@ len(fifo)
 # Exercise 5
 # Stack Data Type Queues
 
-
 class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
 
-
 # Exercise 6
-
-from queues import Stack
+# Lifo Queue First Example
 
 lifo = Stack("1st", "2nd", "3rd")
 
@@ -114,6 +111,7 @@ for element in lifo:
     print(element)
 
 # Exercise 7
+# Lifo Queue Second Example
 
 lifo = []
 
@@ -126,9 +124,12 @@ lifo.pop()
 lifo.pop()
 
 # Exercise 8
+# Priority Queue & Heap & Heappush
 
+# this is for importing and refactoring
 from heapq import heappush
 
+#Heappush
 fruits = []
 
 heappush(fruits, "orange")
@@ -138,34 +139,39 @@ heappush(fruits, "banana")
 fruits
 
 
-# Exercise 9
-
+# this is for importing and refactoring
 from heapq import heappop
 
+
+# Heappop
 heappop(fruits)
 
 fruits
 
 
 # Exercise 10
+# Tuple Comparison
+
 
 person1 = ("John", "Brown", 42)
 person2 = ("John", "Doe", 42)
 person3 = ("John", "Doe", 24)
 
 person1 < person2
-#True
+
 
 person2 < person3
-#False
 
 
 # Exercise 11
+# Priority Queue Data Type
 
+# this is for importing and refactoring
 from collections import deque
 from heapq import heappop, heappush
 
-class PriorityQueue:
+
+class PriorityQueue(IterableMixin):
     def __init__(self):
         self._elements = []
 
@@ -173,10 +179,11 @@ class PriorityQueue:
         heappush(self._elements, (priority, value))
 
     def dequeue(self):
-        return heappop(self._elements)
+        return heappop(self._elements)[1]
     
 
 # Exercise 12
+# Priority Queue Data Type First Example
 
 from queues import PriorityQueue
 
@@ -193,56 +200,17 @@ messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
 
 messages.dequeue()
 
+messages.dequeue()
+
+messages.dequeue()
+
+messages.dequeue()
+
+
 # Exercise 13
+# Corner Cases in the Priority Queue
 
-class PriorityQueue:
-    def __init__(self):
-        self._elements = []
-
-    def enqueue_with_priority(self, priority, value):
-        heappush(self._elements, (-priority, value))
-
-    def dequeue(self):
-        return heappop(self._elements)[1]
-
-
-# Exercise 14
-
-messages.dequeue()
-
-messages.dequeue()
-
-messages.dequeue()
-
-messages.dequeue()
-
-
-# Exercise 15
-
-from dataclasses import dataclass
-
-@dataclass
-class Message:
-    event: str
-
-wipers = Message("Windshield wipers turned on")
-hazard_lights = Message("Hazard lights turned on")
-
-wipers < hazard_lights
-
-# Exercise 16
-
-messages = PriorityQueue()
-
-messages.enqueue_with_priority(CRITICAL, wipers)
-
-messages.enqueue_with_priority(IMPORTANT, hazard_lights)
-
-# Exercise 17
-messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
-
-# Exercise 18
-
+# this is for importing and refactoring
 from collections import deque
 from heapq import heappop, heappush
 from itertools import count
@@ -258,6 +226,42 @@ class PriorityQueue:
 
     def dequeue(self):
         return heappop(self._elements)[-1]
+
+
+# Exercise 14
+# Data Classes
+
+# this is for importing and refactoring
+from dataclasses import dataclass
+
+@dataclass
+class Message:
+    event: str
+
+
+# Exercise 15
+
+from dataclasses import dataclass
+
+@dataclass
+class Message:
+    event: str
+
+wipers = Message("Windshield wipers turned on")
+hazard_lights = Message("Hazard lights turned on")
+
+
+# Exercise 16
+# Messages
+
+messages = PriorityQueue()
+
+messages.enqueue_with_priority(CRITICAL, wipers)
+messages.enqueue_with_priority(IMPORTANT, hazard_lights)
+
+messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
+
+
 
 
 
