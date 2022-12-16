@@ -1,24 +1,47 @@
-#queues.py
-
+# Programmed by: Ireanne N. Omega BSCOE 2-2
+# Reference: https://realpython.com/queue-in-python/#learning-about-the-types-of-queues
 
 # Exercise 1
+# QUEUES
 
+# this is importing and refactoring
 from collections import deque
 
-class Queue:
-    def __init__(self):
-        self._elements = deque()
+class IterableMixin:
+    class IterableMixin:
+        def __len__(self):
+            return len(self._elements)
 
-    def enqueue(self, element):
-        self._elements.append(element)
+        def __iter__(self):
+            while len(self) > 0:
+                yield self.dequeue()
 
-    def dequeue(self):
-        return self._elements.popleft()
+    class Queue(IterableMixin):
+        def __init__(self, *elements):
+            self._elements = deque(elements)
+
+        def __len__(self):
+            return len(self._elements)
+
+        def __iter__(self):
+            while len(self) > 0:
+                yield self.dequeue()
+
+        def enqueue(self, element):
+            self._elements.append(element)
+
+        def dequeue(self):
+            return self._elements.popleft()
 
 
 # Exercise 2
+# FIFO QUEUE TESTING
 
-from queues import Queue
+
+# creating class for queue
+class Queue:
+    pass
+
 
 fifo = Queue()
 fifo.enqueue("1st")
@@ -33,6 +56,8 @@ fifo.dequeue()
 '3rd'
 
 # Exercise 3
+
+
 
 from collections import deque
 
@@ -71,12 +96,10 @@ len(fifo)
 
 
 # Exercise 5
+# Stack Data Type Queues
+
 
 class Stack(Queue):
-    def __init__(self, *elements):
-        super().__init__(elements)
-        self._elements = None
-
     def dequeue(self):
         return self._elements.pop()
 
