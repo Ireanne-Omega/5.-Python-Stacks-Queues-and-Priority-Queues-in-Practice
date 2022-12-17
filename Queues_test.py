@@ -1,65 +1,11 @@
-# Programmed by: Ireanne N. Omega
-# BSCOE 2-2
-# Reference: https://realpython.com/queue-in-python/#learning-about-the-types-of-queues
-
-#  Queue Data Type
+from dataclasses import dataclass
 from collections import deque
-
-class Queue:
-    def __init__(self):
-        self._elements = deque()
-
-    def enqueue(self, element):
-        self._elements.append(element)
-
-    def dequeue(self):
-        return self._elements.popleft()
-
-
-# Queue Data Type - len
-from collections import deque
-
-class Queue:
-    def __init__(self, *elements):
-        self._elements = deque(elements)
-
-    def __len__(self):
-        return len(self._elements)
-
-    def __iter__(self):
-        while len(self) > 0:
-            yield self.dequeue()
-
-    def enqueue(self, element):
-        self._elements.append(element)
-
-    def dequeue(self):
-        return self._elements.popleft()
-
-
-# Stack Data Type
-class Stack(Queue):
-    def dequeue(self):
-        return self._elements.pop()
-
-# Priority Queue Data Type
-from collections import deque
-from heapq import heappop, heappush
+from heapq import heappop, heappush, heapify
 from itertools import count
+from typing import Any
 
-class PriorityQueue:
-    def __init__(self):
-        self._elements = []
-        self._counter = count()
 
-    def enqueue_with_priority(self, priority, value):
-        element = (-priority, next(self._counter), value)
-        heappush(self._elements, element)
-
-    def dequeue(self):
-        return heappop(self._elements)[-1]
-
-# Refactoring the Code Using a Mixin Class
+# Initializing Class: Interable Misin
 class IterableMixin:
     def __len__(self):
         return len(self._elements)
@@ -68,6 +14,8 @@ class IterableMixin:
         while len(self) > 0:
             yield self.dequeue()
 
+
+# Initializing Class: Queue
 class Queue(IterableMixin):
     def __init__(self, *elements):
         self._elements = deque(elements)
@@ -78,10 +26,14 @@ class Queue(IterableMixin):
     def dequeue(self):
         return self._elements.popleft()
 
+
+# Initializing Class: Stack(Queue)
 class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
 
+
+# Initializing Class: Priority Queue
 class PriorityQueue(IterableMixin):
     def __init__(self):
         self._elements = []
@@ -90,21 +42,26 @@ class PriorityQueue(IterableMixin):
     def enqueue_with_priority(self, priority, value):
         element = (-priority, next(self._counter), value)
         heappush(self._elements, element)
+        # heappush(self._elements, (priority, value))
+        # Making the priority a negative number so that
+        # the highest one becomes the lowest
+        # heappush(self._elements, (-priority, value))
 
     def dequeue(self):
+        # return heappop(self._elements)
+        # return heappop(self._elements)[1]
         return heappop(self._elements)[-1]
 
-from collections import deque
-from dataclasses import dataclass
-from heapq import heapify, heappop, heappush
-from itertools import count
-from typing import Any
 
+# Initializing Class: MutableMinHeap
 @dataclass(order=True)
+
+
 class Element:
     priority: float
     count: int
-    value: Any
+    value: any
+
 
 class MutableMinHeap(IterableMixin):
     def __init__(self):
@@ -126,4 +83,3 @@ class MutableMinHeap(IterableMixin):
         return self._elements_by_value[unique_value].priority
 
     def dequeue(self):
-        return heappop(self._elements).value
